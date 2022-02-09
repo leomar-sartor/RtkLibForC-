@@ -1366,13 +1366,13 @@ extern gtime_t timeget(void)
     ep[0]=ts.wYear; ep[1]=ts.wMonth;  ep[2]=ts.wDay;
     ep[3]=ts.wHour; ep[4]=ts.wMinute; ep[5]=ts.wSecond+ts.wMilliseconds*1E-3;
 #else
-    struct timeval tv;
-    struct tm *tt;
+    // struct timeval tv;
+    // struct tm *tt;
     
-    if (!gettimeofday(&tv,NULL)&&(tt=gmtime(&tv.tv_sec))) {
-        ep[0]=tt->tm_year+1900; ep[1]=tt->tm_mon+1; ep[2]=tt->tm_mday;
-        ep[3]=tt->tm_hour; ep[4]=tt->tm_min; ep[5]=tt->tm_sec+tv.tv_usec*1E-6;
-    }
+    // if (!gettimeofday(&tv,NULL)&&(tt=gmtime(&tv.tv_sec))) {
+    //     ep[0]=tt->tm_year+1900; ep[1]=tt->tm_mon+1; ep[2]=tt->tm_mday;
+    //     ep[3]=tt->tm_hour; ep[4]=tt->tm_min; ep[5]=tt->tm_sec+tv.tv_usec*1E-6;
+    // }
 #endif
     return timeadd(epoch2time(ep),timeoffset_);
 }
@@ -1577,7 +1577,7 @@ extern unsigned int tickget(void)
         return tv.tv_sec*1000u+tv.tv_usec/1000u;
     }
 #else
-    gettimeofday(&tv,NULL);
+    //gettimeofday(&tv,NULL);
     return tv.tv_sec*1000u+tv.tv_usec/1000u;
 #endif
 }
